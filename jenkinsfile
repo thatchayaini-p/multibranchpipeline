@@ -1,28 +1,21 @@
-pipeline { 
-  
-   agent any
-
-   stages {
-   
-     stage('Install Dependencies') { 
-        steps { 
-           sh 'npm install' 
-        }
-     }
-     
-     stage('Test') { 
-        steps { 
-           sh 'echo "testing application..."'
-        }
+pipeline {
+  agent any
+  stages {
+    stage('Build') {
+      steps {
+        echo "Building on branch: ${env.BRANCH_NAME}"
       }
+    }
+    stage('Test') {
+      steps {
+        echo 'Running test script...'
+      }
+    }
+    stage('Deploy application') {
+      steps {
+        echo 'Deploying...'
+      }
+    }
+  }
+}
 
-         stage("Deploy application") { 
-         steps { 
-           sh 'echo "deploying application..."'
-         }
-
-     }
-  
-   	}
-
-   }
